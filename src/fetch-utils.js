@@ -32,7 +32,7 @@ export async function searchBusinesses(searchString, locationString, token) {
     return response.body.businesses;
 }
 
-export async function getFavorites(owner_id, token) {
+export async function getFavorites(token) {
     const response = await request  
         .get(`${BE_URL}/api/favorites`)
         .set('Authorization', token)
