@@ -16,9 +16,9 @@ export default class FavoritesPage extends Component {
         return (
             <div>
                 {
-                    this.state.favorites.map((favorite) => {
+                    this.state.favorites.map(favorite => {
                         <div>
-                            
+
                         </div>
                     })
                 }
