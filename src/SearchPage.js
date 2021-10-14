@@ -29,7 +29,7 @@ export default class SearchPage extends Component {
                     /></label>
                     <button>Submit</button>
                 </form>
-            {   businesses.length > 0 
+            {   businesses.length !== 0 
                ? <Business  businesses={businesses}/>
                : <div>Results</div> }
 

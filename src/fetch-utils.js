@@ -1,6 +1,6 @@
 import request from 'superagent'
-const BE_URL = 'https://secure-springs-81342.herokuapp.com';
-
+// const BE_URL = 'https://secure-springs-81342.herokuapp.com';
+const BE_URL =  'http://localhost:6280';
 
 export async function signup(email, password) {
     const response = await request
