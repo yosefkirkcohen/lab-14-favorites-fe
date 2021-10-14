@@ -5,7 +5,8 @@ import {
   NavLink,
   Route,
   Switch,
-  Redirect
+  Redirect,
+  Link
 
 } from 'react-router-dom';
 import SearchPage from './SearchPage.js';
@@ -58,7 +59,7 @@ export default class App extends Component {
               to='/favorites'>Favorites
             </NavLink>
 
-            {token !== '' ? (
+            {token === '' ? (
               <NavLink
                 exact
                 activeClassName='active-link'
@@ -68,14 +69,14 @@ export default class App extends Component {
                 Login
               </NavLink>
             ) : (
-              <NavLink
+              <Link
                 exact
-                activeClassName='active-link'
                 className='navlink'
                 to='/'
+                onClick={this.logout}
               >
                 Logout
-              </NavLink>
+              </Link>
             )}
             
           </header>
