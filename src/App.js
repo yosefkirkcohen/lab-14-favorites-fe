@@ -70,7 +70,6 @@ export default class App extends Component {
               </NavLink>
             ) : (
               <Link
-                exact
                 className='navlink'
                 to='/'
                 onClick={this.logout}
