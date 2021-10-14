@@ -15,8 +15,13 @@ export default class FavoritesPage extends Component {
     render() {
         return (
             <div>
+<<<<<<< HEAD
                 {
                     this.state.favorites.map((favorite) => {
+=======
+                {/* {
+                    this.state.favorites.map(favorite => {
+>>>>>>> d737db384451c8f8dcfbca906925cc42c2244ef9
                         <div>
                             {favorite.name} <br/>
                             Rating: {favorite.rating} <br/>
@@ -25,7 +30,7 @@ export default class FavoritesPage extends Component {
                     
                         </div>
                     })
-                }
+                } */}
             </div>
         )
     }

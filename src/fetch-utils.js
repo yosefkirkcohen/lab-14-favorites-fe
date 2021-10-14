@@ -17,6 +17,7 @@ export async function login(email, password) {
 }
 
 export async function postFavorite(id, token) {
+    console.log(id)
     const response = await request
         .post(`${BE_URL}/api/favorites`)
         .send({ id: id })
