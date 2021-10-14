@@ -33,22 +33,27 @@ export default class App extends Component {
                   <header>
                   <NavLink
                       exact activeClassName='active-link'
+                      className = 'navlink'
                       to='/'>Home
                   </NavLink>
                   <NavLink
                       exact activeClassName='active-link'
+                      className = 'navlink'
                       to='/login'>Login
                   </NavLink>
                   <NavLink
                       exact activeClassName='active-link'
+                      className = 'navlink'
                       to='/signup'>Signup
                   </NavLink>
                   <NavLink
                       exact activeClassName='active-link'
+                      className = 'navlink'
                       to='/search'>Search
                   </NavLink>
                   <NavLink
                       exact activeClassName='active-link'
+                      className = 'navlink'
                       to='/favorites'>Favorites
                   </NavLink>
                   </header>
