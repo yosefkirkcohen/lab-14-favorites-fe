@@ -40,9 +40,17 @@ export async function getFavorites(token) {
 
     return response.body
 }
-export async function checkFavorite(businesses, token){
-    const favorites = getFavorites(token)
-  const match = favorites.find((favorite) => favorite.id === businesses.id )
+export async function checkFavorite(business, token){
+    const favorites = await getFavorites(token)
+    console.log(favorites);
+    let isFavorite = false;
+    favorites.forEach((favorite) => {
+        console.log('favorite id: '+favorite.id);
+        console.log('business id: '+business.id);
+      if(favorite.id === business.id) {
+        isFavorite = true;
+      }
+    });
     
-    return Boolean(match)
+    return isFavorite;
   }
