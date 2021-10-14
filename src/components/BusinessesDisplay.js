@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Business from './Business.js';
 
 export default class BusinessesDisplay extends Component {
     
