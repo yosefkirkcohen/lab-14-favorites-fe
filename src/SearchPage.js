@@ -19,13 +19,13 @@ export default class SearchPage extends Component {
         return (
             <div>
                  <form onSubmit={this.handleSubmit}>
-                    <label>
+                    <label>Search
                     <input required onChange={e => this.setState({ query: e.target.value}) }
                     /></label>
-                    <label>Location
-                    <input required onChange={e => this.setState({ locationstring: e.target.value}) }
+                    <label>City
+                    <input required onChange={e => this.setState({ locationString: e.target.value}) }
                     /></label>
-                    <button>Search</button>
+                    <button>Submit</button>
                 </form>
             <Business  businesses={this.state.businesses}/>
 
