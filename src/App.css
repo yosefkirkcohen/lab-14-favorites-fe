@@ -51,7 +51,17 @@
   width: 250px;
 }
 
+.navlink {
+  color: yellow;
+  text-decoration: none;
+  margin: 5px;
+  background-color: rgb(53, 148, 53);
+  padding: 5px;
+  border-radius: 5px;
+}
+
 .active-link {
   font-size: 1.5rem;
   color: blue;
 }
+
