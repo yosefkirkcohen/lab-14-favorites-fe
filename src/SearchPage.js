@@ -11,11 +11,13 @@ export default class SearchPage extends Component {
     }
     handleSubmit = async e => {
         e.preventDefault();
-        const businesses = await searchBusinesses(this.state.query, this.state.locationString, this.props.token)
+        const { query, locationString } = this.state;
+        const businesses = await searchBusinesses(query, locationString, this.props.token)
         this.setState( { businesses } )
     }
     
     render() {
+        const { businesses } = this.state;
         return (
             <div>
                  <form onSubmit={this.handleSubmit}>
@@ -27,7 +29,9 @@ export default class SearchPage extends Component {
                     /></label>
                     <button>Submit</button>
                 </form>
-            <Business  businesses={this.state.businesses}/>
+            {   businesses.length > 0 
+               ? <Business  businesses={businesses}/>
+               : <div>Results</div> }
 
             </div>
         )
