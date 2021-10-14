@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.businesses-div {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.business-div {
+  width: 300px;
+  margin: 10px;
+}
+
+.business-div > img {
+  width: 250px;
+}
