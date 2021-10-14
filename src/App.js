@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import {
+
   BrowserRouter as Router,
   NavLink,
   Route,
   Switch,
+  Redirect
+
 } from 'react-router-dom';
 import SearchPage from './SearchPage.js';
 import Signup from './Signup';
@@ -20,6 +23,7 @@ export default class App extends Component {
   state = {
     token: localStorage.getItem(TOKEN_KEY) || ''
   }
+
 
   handleTokenChange = async (token) => {
     localStorage.setItem(TOKEN_KEY, token)
@@ -83,14 +87,17 @@ export default class App extends Component {
               exact
               render={(routerProps) => <SearchPage token={this.state.token} {...routerProps} />}
             />
-            <Route
-              path="/favorites"
+            <Route 
+              path="/favorites" 
               exact
-              render={(routerProps) => <FavoritesPage token={this.state.token} {...routerProps} />}
+              render={(routerProps) => this.state.token
+              ? <FavoritesPage token={this.state.token} {...routerProps} />
+              : <Redirect to='/login' /> } 
             />
           </Switch>
         </Router>
       </div>
     )
   }
+
 }
