@@ -6,7 +6,7 @@ export default class BusinessesDisplay extends Component {
     render() {
         const { businesses } = this.props;
         return (
-            <div className="businesses-display">
+            <div className="businesses-div">
                 {businesses.map(business => <Business business={business} />)}
             </div>
         )
