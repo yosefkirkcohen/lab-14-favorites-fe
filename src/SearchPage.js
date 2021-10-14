@@ -1,26 +1,30 @@
 import React, { Component } from 'react'
-import request from 'superagent';
 import Business from './components/Business';
+import { searchBusinesses } from './fetch-utils';
 
 export default class SearchPage extends Component {
     state = {
         businesses: [],
         business: '',
-        query: ''
+        query: '',
+        locationString: ''
     }
     handleSubmit = async e => {
         e.preventDefault();
-        const businesses = await businessSearch(this.state.query)
-        this.setState( businesses )
+        const businesses = await searchBusinesses(this.state.query, this.state.locationString, this.props.token)
+        this.setState( { businesses } )
     }
     
     render() {
         return (
             <div>
                  <form onSubmit={this.handleSubmit}>
-                    <label></label>
-                    <input onChange={e => this.setState({ query: e.target.value}) }
-                    />
+                    <label>
+                    <input required onChange={e => this.setState({ query: e.target.value}) }
+                    /></label>
+                    <label>Location
+                    <input required onChange={e => this.setState({ locationstring: e.target.value}) }
+                    /></label>
                     <button>Search</button>
                 </form>
             <Business  businesses={this.state.businesses}/>
