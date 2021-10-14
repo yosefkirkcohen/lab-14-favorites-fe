@@ -1,6 +1,6 @@
 import request from 'superagent'
-const BE_URL = 'https://secure-springs-81342.herokuapp.com';
-
+// const BE_URL = 'https://secure-springs-81342.herokuapp.com';
+const BE_URL =  'http://localhost:6280';
 
 export async function signup(email, password) {
     const response = await request
@@ -29,7 +29,7 @@ export async function searchBusinesses(searchString, locationString, token) {
     const response = await request
         .get(`${BE_URL}/businesses?q=${searchString}&location=${locationString}`)
         .set('Authorization', token);
-    return response.body.businesses;
+    return response.body;
 }
 
 export async function getFavorites(token) {
