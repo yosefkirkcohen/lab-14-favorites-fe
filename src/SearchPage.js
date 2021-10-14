@@ -1,3 +1,4 @@
+import { Button, TextField } from '@mui/material';
 import React, { Component } from 'react'
 import BusinessesDisplay from './components/BusinessesDisplay';
 import { searchBusinesses } from './fetch-utils';
@@ -7,9 +8,9 @@ export default class SearchPage extends Component {
         businesses: [],
         business: '',
         query: '',
-        locationString: ''
+        location: ''
     }
-    
+
     handleSubmit = async e => {
         e.preventDefault();
         const { query, locationString } = this.state;
@@ -17,23 +18,42 @@ export default class SearchPage extends Component {
         this.setState( { businesses } )
     }
     
+    handleQueryChange = e => {
+        this.setState({ query: e.target.value})
+    }
+
+    handleLocationChange = e => {
+        this.setState({ location: e.target.value });
+    }
+
     render() {
-        const { businesses } = this.state;
+        const {
+            businesses,
+            query,
+            location
+        } = this.state;
         return (
-            <div>
-                 <form onSubmit={this.handleSubmit}>
-                    <label>Search
-                    <input required onChange={e => this.setState({ query: e.target.value}) }
-                    /></label>
-                    <label>City
-                    <input required onChange={e => this.setState({ locationString: e.target.value}) }
-                    /></label>
-                    <button>Submit</button>
-                </form>
-            {console.log(businesses)}
-            {   !!businesses 
-               ? <BusinessesDisplay businesses={businesses}/>
-               : <div>Results</div> }
+            <div className="search-page-div">
+                <div className="search-input-div">
+                    <TextField
+                        label="Search Term"
+                        value={query}
+                        onChange={this.handleQueryChange}
+                        variant="standard"
+                        size="small"
+                    />
+                    <TextField
+                        label="Location"
+                        value={location}
+                        onChange={this.handleLocationChange}
+                        variant="standard"
+                        size="small"
+                    />
+                    <Button variant="outlined" onClick={this.handleSubmit} size="small">Search</Button>
+                </div>
+                {   businesses.length > 0
+                ? <BusinessesDisplay businesses={businesses}/>
+                : <div>No Results</div> }
 
             </div>
         )
