@@ -37,7 +37,7 @@
   }
 }
 
-.businesses-div {
+.businesses-display {
   display: flex;
   flex-flow: row wrap;
 }
@@ -111,5 +111,20 @@ header > a {
 }
 
 .search-page-div > .search-input-div > * {
+  margin: 5px;
+}
+
+.login-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+}
+
+.login-div > .login-buttons-div > *{
   margin: 5px;
 }
