@@ -15,7 +15,7 @@ export default class FavoritesPage extends Component {
     render() {
         return (
             <div>
-                {
+                {/* {
                     this.state.favorites.map(favorite => {
                         <div>
                             {favorite.name} <br/>
@@ -25,7 +25,7 @@ export default class FavoritesPage extends Component {
                     
                         </div>
                     })
-                }
+                } */}
             </div>
         )
     }

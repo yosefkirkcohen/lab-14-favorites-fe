@@ -7,7 +7,8 @@ export default class SearchPage extends Component {
         businesses: [],
         business: '',
         query: '',
-        locationString: ''
+        locationString: '',
+        favorites: []
     }
     
     handleSubmit = async e => {
@@ -18,7 +19,7 @@ export default class SearchPage extends Component {
     }
     
     render() {
-        const { businesses } = this.state;
+        const { businesses, favorites } = this.state;
         return (
             <div>
                  <form onSubmit={this.handleSubmit}>
@@ -32,7 +33,7 @@ export default class SearchPage extends Component {
                 </form>
             {console.log(businesses)}
             {   !!businesses 
-               ? <BusinessesDisplay businesses={businesses}/>
+               ? <BusinessesDisplay  token={this.props.token} businesses={businesses} favorites={favorites}/>
                : <div>Results</div> }
 
             </div>
