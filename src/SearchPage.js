@@ -8,8 +8,9 @@ export default class SearchPage extends Component {
         business: '',
         query: '',
         locationString: '',
-        favorites: ''
+        favorites: []
     }
+    
     handleSubmit = async e => {
         e.preventDefault();
         const { query, locationString } = this.state;
@@ -32,7 +33,7 @@ export default class SearchPage extends Component {
                 </form>
             {/* {console.log(businesses)} */}
             {   !!businesses 
-               ? <BusinessesDisplay  businesses={businesses} favorites={favorites}/>
+               ? <BusinessesDisplay  token={this.props.token} businesses={businesses} favorites={favorites}/>
                : <div>Results</div> }
 
             </div>
