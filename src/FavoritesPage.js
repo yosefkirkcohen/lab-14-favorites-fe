@@ -15,13 +15,13 @@ export default class FavoritesPage extends Component {
     render() {
         return (
             <div>
-                {
+                {/* {
                     this.state.favorites.map(favorite => {
                         <div>
 
                         </div>
                     })
-                }
+                } */}
             </div>
         )
     }

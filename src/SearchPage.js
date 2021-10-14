@@ -31,7 +31,7 @@ export default class SearchPage extends Component {
                     /></label>
                     <button>Submit</button>
                 </form>
-            {/* {console.log(businesses)} */}
+            {console.log(businesses)}
             {   !!businesses 
                ? <BusinessesDisplay  token={this.props.token} businesses={businesses} favorites={favorites}/>
                : <div>Results</div> }
