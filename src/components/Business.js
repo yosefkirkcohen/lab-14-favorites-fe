@@ -6,7 +6,7 @@ export default class Business extends Component {
       name,
       image_url,
       rating
-    } = this.props.business
+    } = this.props.businesses
     return (
       <div className="bussiness-div">
         Name: {name} <br />
