@@ -29,7 +29,7 @@ export async function searchBusinesses(searchString, locationString, token) {
     const response = await request
         .get(`${BE_URL}/businesses?q=${searchString}&location=${locationString}`)
         .set('Authorization', token);
-    return response.body.businesses;
+    return response.body;
 }
 
 export async function getFavorites(token) {

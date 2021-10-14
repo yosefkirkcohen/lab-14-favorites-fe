@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Business from './components/Business';
+import BusinessesDisplay from './components/BusinessesDisplay';
 import { searchBusinesses } from './fetch-utils';
 
 export default class SearchPage extends Component {
@@ -29,8 +29,9 @@ export default class SearchPage extends Component {
                     /></label>
                     <button>Submit</button>
                 </form>
-            {   businesses.length !== 0 
-               ? <Business  businesses={businesses}/>
+            {console.log(businesses)}
+            {   !!businesses 
+               ? <BusinessesDisplay  businesses={businesses}/>
                : <div>Results</div> }
 
             </div>
