@@ -9,6 +9,7 @@ export default class SearchPage extends Component {
         query: '',
         locationString: ''
     }
+    
     handleSubmit = async e => {
         e.preventDefault();
         const { query, locationString } = this.state;
@@ -31,7 +32,7 @@ export default class SearchPage extends Component {
                 </form>
             {console.log(businesses)}
             {   !!businesses 
-               ? <BusinessesDisplay  businesses={businesses}/>
+               ? <BusinessesDisplay businesses={businesses}/>
                : <div>Results</div> }
 
             </div>
