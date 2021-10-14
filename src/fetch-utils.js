@@ -17,7 +17,7 @@ export async function login(email, password) {
 }
 
 export async function postFavorite(id, token) {
-    console.log(id)
+    console.log(id, token)
     const response = await request
         .post(`${BE_URL}/api/favorites`)
         .send({ id: id })
@@ -40,3 +40,9 @@ export async function getFavorites(token) {
 
     return response.body
 }
+export async function checkFavorite(businesses, token){
+    const favorites = getFavorites(token)
+  const match = favorites.find((favorite) => favorite.id === businesses.id )
+    
+    return Boolean(match)
+  }
