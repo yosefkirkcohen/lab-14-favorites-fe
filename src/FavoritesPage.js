@@ -7,8 +7,8 @@ export default class FavoritesPage extends Component {
         favorites: []
     }
 
-    componentDidMount = () => {
-        const favorites = getFavorites(this.props.token);
+    componentDidMount = async() => {
+        const favorites = await getFavorites(this.props.token);
         this.setState({favorites: favorites})
     }
 
@@ -16,7 +16,7 @@ export default class FavoritesPage extends Component {
         return (
             <div>
                 {
-                    this.state.favorites.map(favorite => {
+                    this.state.favorites.map((favorite) => {
                         <div>
                             {favorite.name} <br/>
                             Rating: {favorite.rating} <br/>

@@ -4,6 +4,7 @@ import {
     NavLink, 
     Route, 
     Switch,
+    Redirect
 } from 'react-router-dom';
 import SearchPage from './SearchPage.js';
 import Signup from './Signup';
@@ -81,12 +82,15 @@ export default class App extends Component {
                         <Route 
                           path="/search" 
                           exact
-                          render={(routerProps) => <SearchPage token={this.state.token} {...routerProps} />} 
+                          render={(routerProps) => <SearchPage token={this.state.token} {...routerProps} />
+                          } 
                         />
                         <Route 
                           path="/favorites" 
                           exact
-                          render={(routerProps) => <FavoritesPage token={this.state.token} {...routerProps} />} 
+                          render={(routerProps) => this.state.token
+                          ? <FavoritesPage token={this.state.token} {...routerProps} />
+                          : <Redirect to='/login' /> } 
                         />
                     </Switch>
                 </Router>
