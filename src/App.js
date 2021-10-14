@@ -32,28 +32,23 @@ export default class App extends Component {
                 <Router>
                   <header>
                   <NavLink
-                      exact className='links'
-                      activeStyle={{fontSize:'1.5rem'}}
+                      exact activeClassName='active-link'
                       to='/'>Home
                   </NavLink>
                   <NavLink
-                      exact className='links'
-                      activeStyle={{fontSize:'1.5rem'}}
+                      exact activeClassName='active-link'
                       to='/login'>Login
                   </NavLink>
                   <NavLink
-                      exact className='links'
-                      activeStyle={{fontSize:'1.5rem'}}
+                      exact activeClassName='active-link'
                       to='/signup'>Signup
                   </NavLink>
                   <NavLink
-                      exact className='links'
-                      activeStyle={{fontSize:'1.5rem'}}
+                      exact activeClassName='active-link'
                       to='/search'>Search
                   </NavLink>
                   <NavLink
-                      exact className='links'
-                      activeStyle={{fontSize:'1.5rem'}}
+                      exact activeClassName='active-link'
                       to='/favorites'>Favorites
                   </NavLink>
                   </header>
