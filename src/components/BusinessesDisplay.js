@@ -4,10 +4,10 @@ import Business from './Business.js';
 export default class BusinessesDisplay extends Component {
     
     render() {
-        const { businesses } = this.props;
+        const { businesses, favorites, token } = this.props;
         return (
             <div className="businesses-display">
-                {businesses.map(business => <Business token={this.props.token} favorites={this.props.favorites} business={business} />)}
+                {businesses.map(business => <Business  businesses={businesses} token={token} favorites={favorites} business={business} />)}
             </div>
         )
     }
