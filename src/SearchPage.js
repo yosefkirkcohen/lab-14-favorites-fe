@@ -8,18 +8,19 @@ export default class SearchPage extends Component {
         businesses: [],
         business: '',
         query: '',
-        location: ''
+        location: '',
+        favorites: []
     }
 
     handleSubmit = async e => {
         e.preventDefault();
         const { query, locationString } = this.state;
         const businesses = await searchBusinesses(query, locationString, this.props.token)
-        this.setState( { businesses } )
+        this.setState({ businesses })
     }
-    
+
     handleQueryChange = e => {
-        this.setState({ query: e.target.value})
+        this.setState({ query: e.target.value })
     }
 
     handleLocationChange = e => {
@@ -30,7 +31,8 @@ export default class SearchPage extends Component {
         const {
             businesses,
             query,
-            location
+            location,
+            favorites
         } = this.state;
         return (
             <div className="search-page-div">
@@ -51,10 +53,9 @@ export default class SearchPage extends Component {
                     />
                     <Button variant="outlined" onClick={this.handleSubmit} size="small">Search</Button>
                 </div>
-                {   businesses.length > 0
-                ? <BusinessesDisplay businesses={businesses}/>
-                : <div>No Results</div> }
-
+                {businesses.length > 0 ?
+                    <BusinessesDisplay token={this.props.token} businesses={businesses} favorites={favorites} />
+                    : <div>No Results</div>}
             </div>
         )
     }

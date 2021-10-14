@@ -1,6 +1,6 @@
 import request from 'superagent'
 // const BE_URL = 'https://secure-springs-81342.herokuapp.com';
-const BE_URL =  'http://localhost:3000';
+const BE_URL =  'http://localhost:6280';
 
 export async function signup(email, password) {
     const response = await request
@@ -17,6 +17,7 @@ export async function login(email, password) {
 }
 
 export async function postFavorite(id, token) {
+    console.log(id)
     const response = await request
         .post(`${BE_URL}/api/favorites`)
         .send({ id: id })
