@@ -25,7 +25,7 @@ export async function postFavorite(id, token) {
     return response.body;
 }
 
-async function searchBusinesses(searchString, locationString, token) {
+export async function searchBusinesses(searchString, locationString, token) {
     const response = await request
         .get(`${BE_URL}/businesses?q=${searchString}&location=${locationString}`)
         .set('Authorization', token);
