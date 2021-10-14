@@ -6,7 +6,6 @@ import {
   Switch,
 } from 'react-router-dom';
 import SearchPage from './SearchPage.js';
-import Signup from './Signup';
 import Login from './Login';
 import FavoritesPage from './FavoritesPage'
 import HomePage from './HomePage.js';
@@ -31,47 +30,56 @@ export default class App extends Component {
   }
 
   render() {
+    const { token } = this.state;
     return (
       <div className="app-div">
         <Router>
           <header>
             <NavLink
-              exact activeClassName='active-link'
+              exact
+              activeClassName='active-link'
               className='navlink'
               to='/'>Home
             </NavLink>
             <NavLink
-              exact activeClassName='active-link'
-              className='navlink'
-              to='/login'>Login
-            </NavLink>
-            <NavLink
-              exact activeClassName='active-link'
-              className='navlink'
-              to='/signup'>Signup
-            </NavLink>
-            <NavLink
-              exact activeClassName='active-link'
+              exact
+              activeClassName='active-link'
               className='navlink'
               to='/search'>Search
             </NavLink>
             <NavLink
-              exact activeClassName='active-link'
+              exact
+              activeClassName='active-link'
               className='navlink'
               to='/favorites'>Favorites
             </NavLink>
-            {this.state.token && <button onClick={this.logout}>Logout</button>}
+
+            {token ? (
+              <NavLink
+                exact
+                activeClassName='active-link'
+                className='navlink'
+                to='/login'
+              >
+                Login
+              </NavLink>
+            ) : (
+              <NavLink
+                exact
+                activeClassName='active-link'
+                className='navlink'
+                to='/'
+              >
+                Logout
+              </NavLink>
+            )}
+            
           </header>
           <Switch>
             <Route
               path="/"
               exact
               render={(routerProps) => <HomePage {...routerProps} />}
-            />
-            <Route
-              path="/signup"
-              exact
-              render={(routerProps) => <Signup handleTokenChange={this.handleTokenChange} {...routerProps} />}
             />
             <Route
               path="/login"

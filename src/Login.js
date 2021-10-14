@@ -1,35 +1,80 @@
+import { Button, TextField } from '@mui/material';
 import React, { Component } from 'react'
-import { login } from './fetch-utils';
+import { login, signup } from './fetch-utils';
 
 export default class LoginPage extends Component {
     state = {
         email: '',
         password: ''
     }
-    handleSubmit = async(e) => {
+
+    handleLogin = async(e) => {
+        const {
+            email,
+            password
+        } = this.state;
         e.preventDefault();
-
-        const { token } = await login(this.state.email, this.state.password)
-
+        const { token } = await login(email, password);
         this.props.handleTokenChange(token)
-
         this.props.history.push('/search')
     }
 
+    handleSignup = async (e) => {
+        const {
+            email,
+            password
+        } = this.state;
+        e.preventDefault();
+        const { token } = await signup(email, password);
+        this.props.handleTokenChange(token);
+        this.props.history.push('/search');
+    }
+
+    handleEmailChange = e => {
+        this.setState({ email: e.target.value });
+    }
+
+    handlePasswordChange = e => {
+        this.setState({ password: e.target.value });
+    }
+
     render() {
+        const {
+            email,
+            password
+        } = this.state;
         return (
-            <div>
-                <form className='signup' onSubmit={this.handleSubmit}>
-                    <label>
-                        Email
-                        <input value={this.state.email} onChange={(e) => {this.setState({email: e.target.value})}} />
-                    </label>
-                    <label>
-                        Password
-                        <input value={this.state.password} onChange={(e) => {this.setState({password: e.target.value})}} />
-                    </label>
-                    <button>Submit</button>
-                </form>
+            <div className="login-div">
+                    <TextField
+                        value={email}
+                        label="Email"
+                        variant="standard"
+                        size="small"
+                        onChange={this.handleEmailChange}
+                    />
+                    <TextField
+                        value={password}
+                        label="Password"
+                        variant="standard"
+                        size="small"
+                        onChange={this.handlePasswordChange}
+                    />
+                    <div className="login-buttons-div">
+                        <Button
+                            variant="outlined"
+                            size="small"
+                            onClick={this.handleLogin}
+                        >
+                            Login
+                        </Button>
+                        <Button
+                            variant="outlined"
+                            size="small"
+                            onClick={this.handleSignup}
+                        >
+                            Signup
+                        </Button>
+                    </div>
             </div>
         )
     }
