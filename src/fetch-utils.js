@@ -18,7 +18,7 @@ export async function login(email, password) {
 
 export async function postFavorite(id, token) {
     const response = await request
-        .post(`${BE_URL}/favorites/api/favorites`)
+        .post(`${BE_URL}/api/favorites`)
         .send({ id: id })
         .set('Authorization', token);
 
@@ -30,4 +30,12 @@ export async function searchBusinesses(searchString, locationString, token) {
         .get(`${BE_URL}/businesses?q=${searchString}&location=${locationString}`)
         .set('Authorization', token);
     return response.body.businesses;
+}
+
+export async function getFavorites(owner_id, token) {
+    const response = await request  
+        .get(`${BE_URL}/api/favorites`)
+        .set('Authorization', token)
+
+    return response.body
 }
