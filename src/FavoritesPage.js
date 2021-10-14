@@ -8,7 +8,7 @@ export default class FavoritesPage extends Component {
     }
 
     componentDidMount = () => {
-        const favorites = getFavorites();
+        const favorites = getFavorites(this.props.token);
         this.setState({favorites: favorites})
     }
 
