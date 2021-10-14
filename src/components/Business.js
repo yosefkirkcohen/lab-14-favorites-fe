@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
-import { postFavorite } from '../fetch-utils'
+import { postFavorite,  checkFavorite } from '../fetch-utils'
+
 export default class Business extends Component {
-  
+  state = {
+    favorites: []
+  }
   handleClick = async() => {
     const { id } = this.props.business;
     const { token } = this.props;
-    await postFavorite(id, token)
-    
+    const favoriteID = await postFavorite(id, token)
+    this.setState( {favorites: favoriteID})
   }
+  
   render() {
     const {
       name,
@@ -18,7 +22,10 @@ export default class Business extends Component {
     } = this.props.business
     return (
       <div key={id} className="business-div">
-        <button onClick={this.handleClick}>Favorite</button>
+        {console.log(this.props.businesses)}
+        { checkFavorite(this.props.businesses, this.props.token)
+          ? <div>Favorited⭐</div>
+          : <button onClick={this.handleClick}>Favorite</button> }
         Name: {name} <br />
         <img alt="The business" src={image_url} />
         Rating: {rating}
