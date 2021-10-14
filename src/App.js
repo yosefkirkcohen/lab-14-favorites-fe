@@ -25,7 +25,11 @@ export default class App extends Component {
       localStorage.setItem(TOKEN_KEY, token)
       this.setState({ token: token})
     }
-
+    logout = () => {
+        localStorage.clear()
+        this.setState({ token: '' })
+      }
+             
     render() {
         return (
             <div>
@@ -56,6 +60,7 @@ export default class App extends Component {
                       className = 'navlink'
                       to='/favorites'>Favorites
                   </NavLink>
+                  {this.state.token && <button onClick={this.logout}>Logout</button>}
                   </header>
                     <Switch>
                         <Route 
