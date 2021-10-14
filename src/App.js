@@ -58,7 +58,7 @@ export default class App extends Component {
               to='/favorites'>Favorites
             </NavLink>
 
-            {token ? (
+            {token !== '' ? (
               <NavLink
                 exact
                 activeClassName='active-link'
