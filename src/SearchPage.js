@@ -14,8 +14,8 @@ export default class SearchPage extends Component {
 
     handleSubmit = async e => {
         e.preventDefault();
-        const { query, locationString } = this.state;
-        const businesses = await searchBusinesses(query, locationString, this.props.token)
+        const { query, location } = this.state;
+        const businesses = await searchBusinesses(query, location, this.props.token)
         this.setState({ businesses })
     }
 
